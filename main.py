@@ -1,1 +1,1 @@
-print("Meu primeiro código!")    # todo
+print("meu primeiro código!")    # todo
