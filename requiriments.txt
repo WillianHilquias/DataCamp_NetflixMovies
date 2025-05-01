@@ -1,0 +1,4 @@
+pandas
+matplotlib
+seaborn      # opcional, mas só se quiser
+jupyterlab   # se ainda não tiver
