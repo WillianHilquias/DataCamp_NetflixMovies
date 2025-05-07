@@ -52,7 +52,6 @@ def rel_filmes_series(df: pd.DataFrame) -> None:
     counts = df['type'].value_counts()  # conta a quantidade de cada 'type'
     counts.plot.bar()  # imprime cada 'type' em uma coluna, com sua respectiva quantidade
     plt.title('Filmes vs Séries')
-    plt.show()
 def analyze_top_actors(df: pd.DataFrame, top_n) -> None:
     """
     Identifica e plota os top N atores com mais filmes.
@@ -76,7 +75,6 @@ def analyze_top_actors(df: pd.DataFrame, top_n) -> None:
     plt.xlabel('Número de Filmes')
     # plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.show()
 
 def movies_90s(df: pd.DataFrame) -> None:
     df_90s = df[(df['type'] == 'Movie') & (df['release_year'].between(1990, 1999))]
@@ -91,18 +89,31 @@ def movies_90s(df: pd.DataFrame) -> None:
     plt.xlabel('Ano de Lançamento (faixas de 2 anos)')
     plt.ylabel('Quantidade de Filmes')
     plt.title('Lançamentos por Intervalo de Anos')
-    plt.show()
-
 
 
 def new_movies(df: pd.DataFrame) -> None:
-    # Tendência da quantidade de lançamentos ao longo do tempo
+    """
+    Plota a tendência anual de lançamentos de filmes.
+    """
+    # 1. Filtrar só os filmes
+    df_movies = df[df['type'] == 'Movie']
 
-    df_trend = df['release_year'].value_counts().sort_index().plot(kind='line')
-    df_trend.set_title('Movie Trend')
-    df_trend.set_xlabel('Year')
-    df_trend.set_ylabel('Count')
-    plt.show()
+    # 2. Contar e ordenar por ano
+    counts = df_movies['release_year'].value_counts().sort_index()
+
+    # 3. Nova figura antes de plotar
+    plt.figure(figsize=(8, 5), dpi=120)
+
+    # 4. Plotar linha
+    counts.plot(kind='line')
+
+    # 5. Ajustes de rótulos e título
+    plt.title('Tendência de Lançamentos de Filmes')
+    plt.xlabel('Ano')
+    plt.ylabel('Quantidade de Filmes')
+
+    # 6. Ajustar layout e exibir
+    plt.tight_layout()
 
 
 def main():
@@ -118,6 +129,7 @@ def main():
     analyze_top_actors(df, top_n=20)
     movies_90s(df)
     new_movies(df)
+    plt.show()
 
 
 if __name__ == '__main__':
