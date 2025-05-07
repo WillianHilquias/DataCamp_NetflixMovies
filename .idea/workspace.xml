@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bcb6040-ffc7-45a1-917c-2526c4772634" name="Changes" comment="correções de alguns bugs e reorganização da estrutura do código">
+    <list default="true" id="3bcb6040-ffc7-45a1-917c-2526c4772634" name="Changes" comment="correção de bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +98,7 @@
       <workItem from="1745993232812" duration="462000" />
       <workItem from="1745993706350" duration="2778000" />
       <workItem from="1746112211462" duration="5252000" />
-      <workItem from="1746581648833" duration="1571000" />
+      <workItem from="1746581648833" duration="2961000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -179,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746583135535</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="correção de bugs">
+      <option name="closed" value="true" />
+      <created>1746584389876</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746584389876</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,10 +210,11 @@
     <MESSAGE value="dataset" />
     <MESSAGE value="separa o código corretamente em funções. Novas funções de análise adicionadas" />
     <MESSAGE value="correções de alguns bugs e reorganização da estrutura do código" />
-    <option name="LAST_COMMIT_MESSAGE" value="correções de alguns bugs e reorganização da estrutura do código" />
+    <MESSAGE value="correção de bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="correção de bugs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DataCamp_NetflixMovies$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1746134992595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DataCamp_NetflixMovies$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1746584502391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/DataCamp_CreditCard$main.coverage" NAME="main Coverage Results" MODIFIED="1745993451642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
