@@ -114,10 +114,10 @@ def main():
     df = load_data(data_path)
 
     # 3. Visão geral do dataset
-    print_overview(df)
-
-    # 4. Análise de top atores
+    rel_filmes_series(df)
     analyze_top_actors(df, top_n=20)
+    movies_90s(df)
+    new_movies(df)
 
 
 if __name__ == '__main__':
