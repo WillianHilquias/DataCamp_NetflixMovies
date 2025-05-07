@@ -26,9 +26,19 @@ def configure_plotting():
     })
     # Estilo do Seaborn
     sns.set_style('darkgrid')
-    # Força uso do backend Tk (se necessário)
+    # Força uso do backend Tk
     matplotlib.use('TkAgg')
 
+def style():
+    # 2. Aplique o estilo Seaborn
+    sns.set_style('darkgrid')
+    # (agora 'seaborn-darkgrid' já está registrado no matplotlib)
+    matplotlib.use('TkAgg')  # força o uso do backend Tk
+
+def info():
+    # 3. Visão geral
+    print(df.shape)  # printa linhas e colunas no dataframe
+    print(df.dtypes)  # tipo de dado em cada coluna
 
 def load_data(path: str) -> pd.DataFrame:
     """
@@ -37,16 +47,13 @@ def load_data(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
 
 
-def print_overview(df: pd.DataFrame) -> None:
-    """
-    Exibe forma e tipos de dados do DataFrame.
-    """
-    print(f"DataFrame shape: {df.shape}")
-    print("Tipos de dados por coluna:")
-    print(df.dtypes)
-
-
-def analyze_top_actors(df: pd.DataFrame, top_n: int = 10) -> None:
+def rel_filmes_series(df: pd.DataFrame) -> None:
+    # 4. Distribuição por tipo
+    counts = df['type'].value_counts()  # conta a quantidade de cada 'type'
+    counts.plot.bar()  # imprime cada 'type' em uma coluna, com sua respectiva quantidade
+    plt.title('Filmes vs Séries')
+    plt.show()
+def analyze_top_actors(df: pd.DataFrame, top_n) -> None:
     """
     Identifica e plota os top N atores com mais filmes.
     """
@@ -64,11 +71,37 @@ def analyze_top_actors(df: pd.DataFrame, top_n: int = 10) -> None:
 
     # Plotagem
     plt.figure()
-    top_actors.plot(kind='barh', stacked=True)
+    top_actors.plot(kind='bar', stacked=True)
     plt.title(f'Top {top_n} Atores com Mais Filmes')
     plt.xlabel('Número de Filmes')
-    plt.gca().invert_yaxis()
+    # plt.gca().invert_yaxis()
     plt.tight_layout()
+    plt.show()
+
+def movies_90s(df: pd.DataFrame) -> None:
+    df_90s = df[(df['type'] == 'Movie') & (df['release_year'].between(1990, 1999))]
+    bins = list(range(1990, 2002, 2))  # [1990, 1992, 1994, 1996, 1998, 2000]
+    plt.figure(figsize=(12, 6), dpi=100)   # 12″ de largura × 6″ de altura, 100 dpi
+    plt.hist(
+        df_90s['release_year'],
+        bins=bins,
+        edgecolor='blue'
+    )
+    plt.xticks(bins)
+    plt.xlabel('Ano de Lançamento (faixas de 2 anos)')
+    plt.ylabel('Quantidade de Filmes')
+    plt.title('Lançamentos por Intervalo de Anos')
+    plt.show()
+
+
+
+def new_movies(df: pd.DataFrame) -> None:
+    # Tendência da quantidade de lançamentos ao longo do tempo
+
+    df_trend = df['release_year'].value_counts().sort_index().plot(kind='line')
+    df_trend.set_title('Movie Trend')
+    df_trend.set_xlabel('Year')
+    df_trend.set_ylabel('Count')
     plt.show()
 
 
@@ -84,7 +117,7 @@ def main():
     print_overview(df)
 
     # 4. Análise de top atores
-    analyze_top_actors(df, top_n=10)
+    analyze_top_actors(df, top_n=20)
 
 
 if __name__ == '__main__':
